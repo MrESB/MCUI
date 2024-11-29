@@ -12,3 +12,9 @@ model NewsCard {
   title    String
   image    String
 }
+model InfoCard {
+  id String @id @default(cuid())
+  title String
+  description String
+  image String
+}

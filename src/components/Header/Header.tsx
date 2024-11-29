@@ -12,7 +12,7 @@ import { orange } from "@mui/material/colors";
 export default function headerAppBar() {
   return (
     <AppBar
-      position="static"
+      position="fixed"
       style={{ backgroundColor: "#333", color: "white", direction: "rtl" }}
     >
       <Box display="flex" justifyContent={"space-between"} flexGrow={1}>
