@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "post-update": "echo \"codesandbox preview only, need an update\" && pnpm update --latest"
+    "post-update": "echo \"codesandbox preview only, need an update\" && pnpm update --latest",
+    "prisma-studio": "npx prisma studio",
+    "db-push": "npx prisma db push",
+    "seed": "ts-node prisma/seed.ts"
   },
   "dependencies": {
     "@emotion/cache": "latest",
@@ -16,9 +19,12 @@
     "@mui/icons-material": "^6.1.9",
     "@mui/material": "^6.1.9",
     "@mui/material-nextjs": "latest",
+    "@prisma/client": "^6.0.0",
     "next": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@types/node": "latest",
@@ -26,6 +32,8 @@
     "@types/react-dom": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",
-    "typescript": "latest"
+    "prisma": "^6.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   }
 }
