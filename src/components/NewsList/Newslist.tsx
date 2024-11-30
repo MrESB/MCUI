@@ -1,5 +1,5 @@
 'use client';
-import { Grid } from "@mui/material";
+import { Grid2 } from "@mui/material";
 import axios from "axios";
 import NewsCard from "@/components/NewsCard/NewsCards";
 import { useEffect, useState } from "react";
@@ -24,17 +24,16 @@ const NewsList = () => {
   
         useEffect(() => {
         getNews();
-        console.log("sssss")
     }, []);
 
   return (
-    <Grid container justifyContent="center" 
+    <Grid2 container justifyContent="center" 
                     alignItems="center"
                     spacing={2}>
       {news?.map((item, index) => (
         <NewsCard key={index} data={item} />
       ))}
-    </Grid>
+    </Grid2>
   );
 };
 export default NewsList;

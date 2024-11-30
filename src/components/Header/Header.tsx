@@ -30,10 +30,14 @@ export default function headerAppBar() {
     </CardMedia>
         </Toolbar>
         <Toolbar>
-            <Button color="inherit"> <Typography sx={{'&:hover': {color: '#54C5D0', fontWeight: "bold", backgroundColor: 'transparent' }}}> ترابرد </Typography> </Button>
-            <IconButton aria-label="Location" color="inherit"
-                    sx={{ '&:hover': { color: 'orange', backgroundColor: 'transparent' } }}
->
+            <Button color="inherit" sx={{'&:hover': {backgroundColor: 'transparent' }}}>
+              <Typography sx={{'&:hover': {color: '#54C5D0', fontWeight: "bold"}}}> ترابرد </Typography>
+            </Button>
+            <IconButton
+            aria-label="Location"
+            color="inherit"
+            sx={{ '&:hover': { color: 'orange', backgroundColor: 'transparent' } }}
+            >
               <LocationOnIcon />
             </IconButton>   
             <IconButton aria-label="Search" color="inherit" 

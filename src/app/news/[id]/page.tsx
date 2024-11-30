@@ -1,17 +1,17 @@
 'use client';
 import * as React from 'react';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Button, Box } from '@mui/material';
 import { useParams } from 'next/navigation';
 
 export default function about() {
     const param = useParams();
+    console.log(param)
     const newsId = param?.id; 
     return(
-        <Container maxWidth='lg'>
+        <Box margin={"auto"}>
             <Typography>
-                {'News Detail loaded with id: ${newsId}'}
+                Your news Id is: {param.id}
             </Typography>
-            
-        </Container>
+        </Box>
     );
 }
