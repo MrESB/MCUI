@@ -1,26 +1,23 @@
-import { FC } from "react";
+
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
-import { Margin, WidthFull } from "@mui/icons-material";
-import { Stack, autocompleteClasses, Button } from "@mui/material";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Stack, Button } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 type NewsType = {
   title: string;
+  image: string;
 };
 
 type OwnProps = {
   data: NewsType;
 };
 
-export default function ActionAreaCard() {
-  const NewsCard : FC<OwnProps> = (data) => {
-      const news1 = News[0];
+export default function NewsCard({data}: OwnProps) {
   return (
     <Stack
       direction="column"
@@ -43,16 +40,20 @@ export default function ActionAreaCard() {
           <CardMedia
             component="img"
             height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
+            image={data.image}
             alt="green iguana"
             sx={{
-              margin: 5,
+              margin:2, 
+              height: "auto",
+              width: "auto",
               borderRadius: 2,
             }}
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              Lizard
+            <Typography gutterBottom variant="h5" component="div" sx={{
+              direction:'rtl'
+            }}>
+              {data.title}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -70,5 +71,4 @@ export default function ActionAreaCard() {
       </Button>
     </Stack>
   );
-}
 }

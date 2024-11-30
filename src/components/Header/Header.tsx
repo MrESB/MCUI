@@ -7,7 +7,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button, Typography, CardMedia } from "@mui/material";
-import { orange } from "@mui/material/colors";
 
 export default function headerAppBar() {
   return (
@@ -31,8 +30,6 @@ export default function headerAppBar() {
     </CardMedia>
         </Toolbar>
         <Toolbar>
-          <Box>
-          
             <Button color="inherit"> <Typography sx={{'&:hover': {color: '#54C5D0', fontWeight: "bold", backgroundColor: 'transparent' }}}> ترابرد </Typography> </Button>
             <IconButton aria-label="Location" color="inherit"
                     sx={{ '&:hover': { color: 'orange', backgroundColor: 'transparent' } }}
@@ -43,7 +40,6 @@ export default function headerAppBar() {
              sx={{ '&:hover': { color: 'orange', backgroundColor: 'transparent' } }}>
               <SearchIcon />
             </IconButton>
-          </Box>
         </Toolbar>
       </Box>
     </AppBar>
