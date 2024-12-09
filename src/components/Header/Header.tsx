@@ -7,10 +7,17 @@ import SearchIcon from "@mui/icons-material/Search";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button, Typography, CardMedia } from "@mui/material";
-
+import LeafLetMap from "../LeafletMap/LeafLetMap";
 export default function headerAppBar() {
+  const [showMap, setShowMap] = React.useState(false);
+
+  const toggleMap = () => {
+    setShowMap((prev) => !prev);
+  };
+
   return (
-    <AppBar
+    <>
+      <AppBar
       position="fixed"
       style={{ backgroundColor: "#333", color: "white", direction: "rtl" }}
     >
@@ -37,6 +44,7 @@ export default function headerAppBar() {
             aria-label="Location"
             color="inherit"
             sx={{ '&:hover': { color: 'orange', backgroundColor: 'transparent' } }}
+            onClick={toggleMap}
             >
               <LocationOnIcon />
             </IconButton>   
@@ -47,5 +55,8 @@ export default function headerAppBar() {
         </Toolbar>
       </Box>
     </AppBar>
+
+    {showMap && <LeafLetMap onClose={toggleMap} />}
+    </>
   );
 }
