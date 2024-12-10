@@ -3,32 +3,34 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Box, Button } from "@mui/material";
 import { LatLngExpression } from "leaflet";
+import L from "leaflet";
 
 interface LocationMapProps {
   onClose: () => void;
 }
 
 const LocationMap: React.FC<LocationMapProps> = ({ onClose }) => {
-  // State to store current position
   const [position, setPosition] = useState<LatLngExpression | null>(null);
 
-  // Fetch user's current position using geolocation API
   useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          // Update state with the user's current coordinates
-          setPosition([position.coords.latitude, position.coords.longitude]);
-        },
-        (error) => {
-          console.error("Error getting current position", error);
-          // Handle geolocation error if needed
+    const fetchLocationByIP = async () => {
+      try {
+        const apiKey = "f61d1b1f4b614a0ba54271e875e9df21";
+        const response = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`);
+        const data = await response.json();
+  
+        if (data.latitude && data.longitude) {
+          setPosition([data.latitude, data.longitude]);
+        } else {
+          console.error(data);
         }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser.");
-    }
-  }, []); // Empty dependency array ensures this runs only once on component mount
+      } catch (error) {
+        console.error(error);
+      }
+    };
+  
+    fetchLocationByIP();
+  }, []);
 
   if (!position) {
     return (
@@ -46,10 +48,19 @@ const LocationMap: React.FC<LocationMapProps> = ({ onClose }) => {
           alignItems: "center",
         }}
       >
-        <Box sx={{ color: "white" }}>Loading your location...</Box>
+        <Box sx={{ color: "white", direction: "rtl" }}>در حال بارگذاری...</Box>
       </Box>
     );
   }
+
+  const customIcon = new L.Icon({
+    iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+    shadowSize: [41, 41],
+  });
 
   return (
     <Box
@@ -86,8 +97,8 @@ const LocationMap: React.FC<LocationMapProps> = ({ onClose }) => {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={position}>
-            <Popup>Your current location!</Popup>
+          <Marker position={position} icon={customIcon}>
+            <Popup>موقعیت مکانی تقریبی شما!</Popup>
           </Marker>
         </MapContainer>
       </Box>
