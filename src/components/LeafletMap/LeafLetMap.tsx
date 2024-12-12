@@ -5,28 +5,24 @@ import { Box, Button } from "@mui/material";
 import { LatLngExpression } from "leaflet";
 import L from "leaflet";
 
-interface LocationMapProps {
+interface LeafLetMapProps {
   onClose: () => void;
 }
 
-const LocationMap: React.FC<LocationMapProps> = ({ onClose }) => {
+const LeafLetMap: React.FC<LeafLetMapProps> = ({ onClose }) => {
   const [position, setPosition] = useState<LatLngExpression | null>(null);
 
   useEffect(() => {
-    const fetchLocationByIP = async () => {
-      try {
-        const apiKey = "f61d1b1f4b614a0ba54271e875e9df21";
-        const response = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`);
-        const data = await response.json();
-  
-        if (data.latitude && data.longitude) {
-          setPosition([data.latitude, data.longitude]);
-        } else {
-          console.error(data);
-        }
-      } catch (error) {
-        console.error(error);
-      }
+      const fetchLocationByIP = async () => {
+          const apiKey = "f61d1b1f4b614a0ba54271e875e9df21";
+          const response = await fetch(`https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}`);
+          const data = await response.json();
+    
+          if (data.latitude && data.longitude) {
+            setPosition([data.latitude, data.longitude]);
+          } else {
+            console.error(data);
+          }
     };
   
     fetchLocationByIP();
@@ -89,7 +85,7 @@ const LocationMap: React.FC<LocationMapProps> = ({ onClose }) => {
           "&:hover": { backgroundColor: "gray" },
         }}
       >
-        Close
+        بستن
       </Button>
       <Box sx={{ width: "90%", height: "80%" }}>
         <MapContainer center={position} zoom={13} style={{ height: "100%", width: "100%" }}>
@@ -98,7 +94,7 @@ const LocationMap: React.FC<LocationMapProps> = ({ onClose }) => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
           <Marker position={position} icon={customIcon}>
-            <Popup>موقعیت مکانی تقریبی شما!</Popup>
+            <Popup>موقعیت مکانی تقریبی شما</Popup>
           </Marker>
         </MapContainer>
       </Box>
@@ -106,4 +102,4 @@ const LocationMap: React.FC<LocationMapProps> = ({ onClose }) => {
   );
 };
 
-export default LocationMap;
+export default LeafLetMap;
