@@ -9,7 +9,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Button, Typography, CardMedia } from "@mui/material";
 import LeafLetMap from "../LeafletMap/LeafLetMap";
 
-
 export default function headerAppBar() {
   const [showMap, setShowMap] = React.useState(false);
 
@@ -25,7 +24,12 @@ export default function headerAppBar() {
       >
         <Box display="flex" justifyContent={"space-between"} flexGrow={1}>
           <Toolbar>
-            <IconButton size="large" edge="end" color="inherit" aria-label="menu">
+            <IconButton
+              size="large"
+              edge="end"
+              color="inherit"
+              aria-label="menu"
+            >
               <MenuIcon />
             </IconButton>
             <CardMedia
@@ -38,15 +42,22 @@ export default function headerAppBar() {
             />
           </Toolbar>
           <Toolbar>
-            <Button color="inherit" sx={{ "&:hover": { backgroundColor: "transparent" } }}>
-              <Typography sx={{ "&:hover": { color: "#54C5D0", fontWeight: "bold" } }}>
+            <Button
+              color="inherit"
+              sx={{ "&:hover": { backgroundColor: "transparent" } }}
+            >
+              <Typography
+                sx={{ "&:hover": { color: "#54C5D0", fontWeight: "bold" } }}
+              >
                 ترابرد
               </Typography>
             </Button>
             <IconButton
               aria-label="Location"
               color="inherit"
-              sx={{ "&:hover": { color: "orange", backgroundColor: "transparent" } }}
+              sx={{
+                "&:hover": { color: "orange", backgroundColor: "transparent" },
+              }}
               onClick={toggleMap}
             >
               <LocationOnIcon />
@@ -54,7 +65,9 @@ export default function headerAppBar() {
             <IconButton
               aria-label="Search"
               color="inherit"
-              sx={{ "&:hover": { color: "orange", backgroundColor: "transparent" } }}
+              sx={{
+                "&:hover": { color: "orange", backgroundColor: "transparent" },
+              }}
             >
               <SearchIcon />
             </IconButton>

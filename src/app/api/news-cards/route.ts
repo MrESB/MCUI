@@ -3,7 +3,7 @@
 import { ServiceNewsService } from "@/services/news-card.service";
 import { NextResponse } from "next/server";
 
-const serviceNewsService = new ServiceNewsService
+const serviceNewsService = new ServiceNewsService();
 
 
 

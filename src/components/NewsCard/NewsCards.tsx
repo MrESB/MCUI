@@ -20,7 +20,7 @@ type OwnProps = {
 
 export default function NewsCard({ data }: OwnProps) {
   return (
-    <Link href={`/news/${data?.id}`} style={{ textDecoration: "none"}}>
+    <Link href={`/news/${data?.id}`} style={{ textDecoration: "none" }}>
       <Stack
         direction="column"
         spacing={2}
@@ -45,7 +45,7 @@ export default function NewsCard({ data }: OwnProps) {
               image={data.image}
               alt="Image Alt"
               sx={{
-                margin:2,
+                margin: 2,
                 height: "auto",
                 width: "auto",
                 borderRadius: 2,
@@ -65,14 +65,15 @@ export default function NewsCard({ data }: OwnProps) {
           }}
         >
           <Stack
-          direction={"row"}
-          width={"100%"}
-          justifyContent={"space-between"}
-          alignItems={"center"}>
-            <Typography sx={{ padding: 1,}}>
+            direction={"row"}
+            width={"100%"}
+            justifyContent={"space-between"}
+            alignItems={"center"}
+          >
+            <Typography sx={{ padding: 1 }}>
               <AddShoppingCartIcon />
             </Typography>
-            <Typography style={{ padding: 1, fontSize: 20, width: "100",}}>
+            <Typography style={{ padding: 1, fontSize: 20, width: "100" }}>
               {data.title}
             </Typography>
           </Stack>
